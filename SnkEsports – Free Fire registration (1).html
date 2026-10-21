@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SnkEsports – Free Fire registration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600&family=Chakra+Petch:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF6FB;--surface:#FFFFFF;--ink:#0B2540;--muted:#4A6178;--accent:#0A6FB8;--accent-ink:#FFFFFF;--line:#C9DCEA;--err:#C62839;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#07182B;--surface:#0E2742;--ink:#E8F4FB;--muted:#8FB0C8;--accent:#22D3EE;--accent-ink:#06223A;--line:#1D4468;--err:#FF8A94}}
+:root[data-theme="dark"]{--bg:#07182B;--surface:#0E2742;--ink:#E8F4FB;--muted:#8FB0C8;--accent:#22D3EE;--accent-ink:#06223A;--line:#1D4468;--err:#FF8A94}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg);scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 16px/1.5 Barlow,system-ui,sans-serif}
+main{max-width:640px;margin:0 auto;padding:28px 18px 48px}
+h1{font:700 clamp(2rem,9vw,3.2rem)/1.02 'Chakra Petch','Arial Narrow',system-ui,sans-serif;margin:0 0 8px}
+.sub{color:var(--muted);margin:0 0 20px}
+dl.facts{margin:0 0 26px;border-left:4px solid var(--accent);padding-left:14px}
+dl.facts div{display:flex;gap:12px;padding:2px 0}
+dt{color:var(--muted);min-width:64px}
+dd{margin:0;font-weight:600}
+.roster{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 8px}
+.pip{border:2px solid var(--line);border-radius:6px;padding:12px 4px;text-align:center;font:600 .85rem 'Chakra Petch',system-ui,sans-serif;color:var(--muted);transition:background .2s,color .2s,border-color .2s}
+.pip.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+#count{color:var(--muted);margin:0 0 24px;font-size:.95rem}
+label{display:block;font-weight:600;font-size:.95rem}
+input[type=text],input[type=tel]{display:block;width:100%;margin-top:4px;padding:12px;font:inherit;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:6px}
+input:focus-visible,button:focus-visible,a.btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.field{margin-bottom:16px}
+fieldset{border:0;padding:0;margin:8px 0}
+legend{font:700 1.2rem 'Chakra Petch',system-ui,sans-serif;padding:0;margin-bottom:10px}
+.pl{background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:12px;margin-bottom:10px}
+.who{font-weight:700;margin-bottom:8px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:440px){.two{grid-template-columns:1fr}}
+.err{color:var(--err);margin:6px 0 0;font-size:.92rem}
+.err:empty{display:none}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:500;margin:18px 0 4px}
+.check input{width:20px;height:20px;margin-top:3px;accent-color:var(--accent)}
+.btn{display:block;width:100%;font:700 1rem 'Chakra Petch',system-ui,sans-serif;border:0;border-radius:6px;padding:14px 20px;background:var(--accent);color:var(--accent-ink);cursor:pointer;text-decoration:none;text-align:center}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--line)}
+#go{margin-top:16px}
+#done{display:none}
+#done.show{display:block}
+#done h2{font:700 1.7rem/1.1 'Chakra Petch',system-ui,sans-serif;margin:0 0 6px}
+pre{white-space:pre-wrap;word-break:break-word;background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:14px;font:500 .95rem/1.55 Barlow,system-ui,sans-serif;margin:14px 0}
+.acts{display:grid;gap:10px}
+.corner{text-align:right;margin:0 0 14px;font-size:.92rem;color:var(--muted)}
+.corner a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:2px solid var(--accent)}
+.mailbox{border:2px solid var(--accent);border-radius:8px;padding:14px;margin:0 0 14px;background:var(--surface)}
+.mailbox div{color:var(--muted);font-size:.92rem}
+.mailbox a{display:block;margin-top:4px;color:var(--ink);font:700 1.1rem 'Chakra Petch',system-ui,sans-serif;word-break:break-all;text-decoration:none}
+.mode{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 22px}
+.mode label{position:relative;font:700 1rem 'Chakra Petch',system-ui,sans-serif}
+.mode input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.mode span{display:block;text-align:center;padding:12px;border:2px solid var(--line);border-radius:6px;color:var(--muted);background:var(--surface)}
+.mode input:checked+span{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.mode input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){.pip{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<div class="corner">Contact: <a href="tel:9662905613">9662905613</a></div>
+<div id="reg">
+  <h1>SnkEsports</h1>
+  <p class="sub" id="sub">Free Fire · Squad registration</p>
+  <dl class="facts">
+    <div><dt>Format</dt><dd>Squad of 4 + 1 sub, or solo</dd></div>
+    <div><dt>Date</dt><dd>To be announced</dd></div>
+    <div><dt>Slot</dt><dd>Confirmed after you send your details</dd></div>
+  </dl>
+
+  <div class="mode" role="radiogroup" aria-label="Registration type">
+    <label><input type="radio" name="mode" value="squad" checked><span>Squad</span></label>
+    <label><input type="radio" name="mode" value="solo"><span>Solo player</span></label>
+  </div>
+  <div id="rost">
+  <div class="roster" aria-hidden="true">
+    <div class="pip">Leader</div><div class="pip">Player</div><div class="pip">Player</div><div class="pip">Player</div>
+  </div>
+  <p id="count" aria-live="polite">0 of 4 players ready</p>
+  </div>
+
+  <form id="f" novalidate>
+    <div class="field" id="teamf"><label for="team">Team name</label><input id="team" type="text" maxlength="24" autocomplete="off"><p class="err" id="e-team" aria-live="polite"></p></div>
+    <div class="field"><label for="phone" id="phl">WhatsApp number of the squad leader</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel"><p class="err" id="e-phone" aria-live="polite"></p></div>
+    <div class="field"><label for="city">City or area</label><input id="city" type="text" autocomplete="off"><p class="err" id="e-city" aria-live="polite"></p></div>
+    <fieldset><legend id="leg">Squad</legend><div id="players"></div></fieldset>
+    <label class="check"><input type="checkbox" id="agree"><span>Our squad agrees to the tournament rules and will join on time.</span></label>
+    <p class="err" id="e-agree" aria-live="polite"></p>
+    <button class="btn" id="go" type="submit">Register squad</button>
+  </form>
+</div>
+
+<section id="done" aria-live="polite">
+  <h2 id="dh">Squad registered</h2>
+  <p class="sub" id="next"></p>
+  <pre id="sum"></pre>
+  <div class="mailbox"><div>Send your details to this email</div><a id="mail" href="mailto:snkgaming420@gmail.com">snkgaming420@gmail.com</a></div>
+  <div class="acts">
+    <a class="btn" id="wa" target="_blank" rel="noopener" hidden>Send on WhatsApp</a>
+    <button class="btn alt" id="copy" type="button">Copy details</button>
+    <button class="btn alt" id="again" type="button">Register another</button>
+  </div>
+</section>
+</main>
+
+<script>
+(function(){
+var ORGANIZER_WHATSAPP = ""; // digits with country code, e.g. "919876543210"
+var EVENT = "SnkEsports";
+var PL = [["p1","Squad leader"],["p2","Player 2"],["p3","Player 3"],["p4","Player 4"],["p5","Substitute (optional)"]];
+var $ = function(s){return document.querySelector(s);};
+var v = function(id){return $("#"+id).value.trim();};
+var uidOk = function(u){return /^\d{8,12}$/.test(u);};
+
+$("#players").innerHTML = PL.map(function(p){
+  return '<div class="pl" id="row-'+p[0]+'"><div class="who" id="who-'+p[0]+'">'+p[1]+'</div><div class="two">'+
+  '<label for="'+p[0]+'n">In-game name<input id="'+p[0]+'n" type="text" autocomplete="off"></label>'+
+  '<label for="'+p[0]+'u">Free Fire UID<input id="'+p[0]+'u" type="text" inputmode="numeric" autocomplete="off"></label></div>'+
+  '<p class="err" id="e-'+p[0]+'" aria-live="polite"></p></div>';
+}).join("");
+
+var pips = [].slice.call(document.querySelectorAll(".pip"));
+function roster(){
+  var n = 0;
+  pips.forEach(function(el,i){
+    var ok = v(PL[i][0]+"n") && uidOk(v(PL[i][0]+"u"));
+    el.classList.toggle("on", !!ok);
+    if (ok) n++;
+  });
+  $("#count").textContent = n + " of 4 players ready";
+}
+$("#f").addEventListener("input", roster);
+
+var solo = function(){return $("input[name=mode]:checked").value === "solo";};
+function setMode(){
+  var s = solo();
+  $("#teamf").hidden = s;
+  $("#rost").hidden = s;
+  $("#leg").textContent = s ? "Player" : "Squad";
+  $("#who-p1").textContent = s ? "Player" : "Squad leader";
+  $("#phl").textContent = s ? "WhatsApp number" : "WhatsApp number of the squad leader";
+  $("#sub").textContent = s ? "Free Fire · Solo registration" : "Free Fire · Squad registration";
+  $("#go").textContent = s ? "Register solo" : "Register squad";
+  PL.slice(1).forEach(function(p){$("#row-"+p[0]).hidden = s;});
+  [].forEach.call(document.querySelectorAll(".err"), function(el){el.textContent = "";});
+}
+[].forEach.call(document.querySelectorAll("input[name=mode]"), function(x){x.addEventListener("change", setMode);});
+
+function check(){
+  var e = {}, seen = {};
+  var t = v("team");
+  if (!solo() && (t.length < 3 || t.length > 24)) e.team = "Enter a team name of 3 to 24 characters.";
+  var d = v("phone").replace(/\D/g,"");
+  if (d.length < 8 || d.length > 15) e.phone = "Enter a WhatsApp number with 8 to 15 digits.";
+  if (!v("city")) e.city = "Enter your city or area.";
+  PL.forEach(function(p,i){
+    var k = p[0], n = v(k+"n"), u = v(k+"u"), lab = solo() ? "Player" : p[1];
+    if (solo() && i > 0) return;
+    if (i === 4 && !n && !u) return;
+    if (!n) e[k] = lab + ": enter the in-game name.";
+    else if (!uidOk(u)) e[k] = lab + ": UID must be 8 to 12 digits.";
+    else if (seen[u]) e[k] = lab + ": this UID is already used in your squad.";
+    else seen[u] = 1;
+  });
+  if (!$("#agree").checked) e.agree = "Tick the box to accept the rules.";
+  return e;
+}
+
+$("#f").addEventListener("submit", function(ev){
+  ev.preventDefault();
+  var e = check(), keys = ["team","phone","city","p1","p2","p3","p4","p5","agree"], first = null;
+  keys.forEach(function(k){
+    $("#e-"+k).textContent = e[k] || "";
+    if (e[k] && !first) first = k;
+  });
+  if (first) {
+    var f = $(first === "agree" ? "#agree" : (first.charAt(0) === "p" && first.length === 2 ? "#"+first+(v(first+"n") ? "u" : "n") : "#"+first));
+    if (f) f.focus();
+    return;
+  }
+  var code = "FF-" + Math.random().toString(36).slice(2,7).toUpperCase();
+  var s = solo();
+  var lines = [EVENT + (s ? " – solo registration" : " – squad registration"), "Code: " + code];
+  if (!s) lines.push("Team: " + v("team"));
+  lines.push("WhatsApp: " + v("phone"), "City: " + v("city"), "");
+  PL.forEach(function(p,i){
+    if (s && i > 0) return;
+    var n = v(p[0]+"n"), u = v(p[0]+"u");
+    if (n) lines.push((s ? "Player" : p[1].replace(" (optional)","")) + ": " + n + " (UID " + u + ")");
+  });
+  $("#dh").textContent = s ? "Solo player registered" : "Squad registered";
+  var txt = lines.join("\n");
+  $("#sum").textContent = txt;
+  $("#mail").href = "mailto:snkgaming420@gmail.com?subject=" + encodeURIComponent(EVENT + " registration " + code) + "&body=" + encodeURIComponent(txt);
+  var num = ORGANIZER_WHATSAPP.replace(/\D/g,""), wa = $("#wa");
+  if (num) {
+    wa.href = "https://wa.me/" + num + "?text=" + encodeURIComponent(txt);
+    wa.hidden = false;
+    $("#next").textContent = "Send these details to the email below, or on WhatsApp, to confirm your slot.";
+  } else {
+    wa.hidden = true;
+    $("#next").textContent = "Send these details to the email below to confirm your slot.";
+  }
+  $("#copy").textContent = "Copy details";
+  $("#reg").style.display = "none";
+  $("#done").classList.add("show");
+  window.scrollTo(0,0);
+});
+
+$("#copy").addEventListener("click", function(){
+  var b = this, txt = $("#sum").textContent;
+  function sel(){var r=document.createRange();r.selectNodeContents($("#sum"));var s=window.getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Details selected: copy them manually";}
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(txt).then(function(){b.textContent="Copied";}, sel);
+  } else sel();
+});
+
+$("#again").addEventListener("click", function(){
+  $("#f").reset();
+  setMode();
+  roster();
+  $("#done").classList.remove("show");
+  $("#reg").style.display = "";
+  window.scrollTo(0,0);
+});
+})();
+</script>
+</body>
+</html>
